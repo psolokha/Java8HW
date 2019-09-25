@@ -1,3 +1,7 @@
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Organization {
 
     private int id;
@@ -19,7 +23,8 @@ public class Organization {
 
     @Override
     public String toString() {
-        return name_short + " - " + egrul_date;
+        ArrayList<Integer> tmpList = App.getDate(egrul_date);
+        return name_short + " - " + String.format("%02d/%02d/%02d", tmpList.get(2), tmpList.get(1), Integer.parseInt(String.valueOf(tmpList.get(0)).substring(2)));
     }
 
     public int getId() {

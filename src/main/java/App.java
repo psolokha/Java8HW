@@ -28,13 +28,14 @@ public class App {
 
     static {
         try {
-            JsonArray jsonArray = new JsonParser().parse(new FileReader("D:\\projects\\Java\\java8hw\\src\\main\\resources\\test.json")).getAsJsonArray();
+            JsonArray jsonArray = new JsonParser().parse(new FileReader("/home/pavelsolokha/dev/java8hw/src/main/resources/test.json")).getAsJsonArray();
 
             Gson gson = new Gson();
             for (JsonElement element : jsonArray) {
                 orgList.add(gson.fromJson(element, Organization.class));
             }
         } catch (IOException ex) {
+            System.out.println("Не получается открыть файл");
             ex.printStackTrace();
         }
     }

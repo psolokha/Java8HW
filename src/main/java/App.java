@@ -27,8 +27,8 @@ public class App {
     public static ArrayList<Organization> orgList = new ArrayList<>();
 
     static {
-        try {
-            JsonArray jsonArray = new JsonParser().parse(new FileReader("/home/pavelsolokha/dev/java8hw/src/main/resources/test.json")).getAsJsonArray();
+        try (FileReader reader = new FileReader("/home/pavelsolokha/dev/java8hw/src/main/resources/test.json")) {
+            JsonArray jsonArray = new JsonParser().parse(reader).getAsJsonArray();
 
             Gson gson = new Gson();
             for (JsonElement element : jsonArray) {

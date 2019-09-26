@@ -34,12 +34,15 @@ public class App {
 
     public static void main(String... args) {
 
-        printer.accept("Список организаций: ");
+        if (!(orgList.isEmpty())){
+            printer.accept("Список организаций: ");
+            orgList.forEach((o) -> printer.accept(o.toString()));
+        }
 
-        if (!(orgList.isEmpty()))orgList.forEach((o) -> printer.accept(o.toString()));
         printPastDueSecuritites();
         printByDate();
         printCurrencies();
+
         try {
             reader.close();
         } catch (IOException e) {

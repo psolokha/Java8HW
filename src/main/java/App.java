@@ -54,7 +54,7 @@ public class App {
         }
     }
 
-    private static ArrayList<Integer> getDate(String date) {
+    static ArrayList<Integer> getDate(String date) {
         StringTokenizer tokenizer = new StringTokenizer(date, "/-:.,\\");
         ArrayList<Integer> dateList = new ArrayList<>();
 

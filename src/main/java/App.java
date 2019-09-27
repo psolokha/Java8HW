@@ -47,14 +47,14 @@ public class App {
 
     }
 
-    public static void printOrganizations(){
+    private static void printOrganizations(){
         if (!(orgList.isEmpty())){
             printer.accept("Список организаций: ");
             orgList.forEach((o) -> printer.accept(o.toString()));
         }
     }
 
-    public static ArrayList<Integer> getDate(String date) {
+    private static ArrayList<Integer> getDate(String date) {
         StringTokenizer tokenizer = new StringTokenizer(date, "/-:.,\\");
         ArrayList<Integer> dateList = new ArrayList<>();
 
@@ -69,7 +69,7 @@ public class App {
         return dateList;
     }
 
-    public static void printCurrencies() {
+    private static void printCurrencies() {
         if (!(orgList.isEmpty())) {
             printer.accept("Введите код валюты: ");
             try {
@@ -87,7 +87,7 @@ public class App {
         }
     }
 
-    public static void printByDate() {
+    private static void printByDate() {
 
         if (!(orgList.isEmpty())) {
 
@@ -113,16 +113,12 @@ public class App {
     private static ArrayList<Securities> getAllSecurities() {
             ArrayList<Securities> tmpList = new ArrayList<>();
 
-            orgList.forEach(organization -> {
-                for (Securities sec : organization.getSecurities()) {
-                    tmpList.add(sec);
-                }
-            });
+            orgList.forEach(organization -> Collections.addAll(tmpList, organization.getSecurities()));
             return tmpList;
         }
 
 
-    public static void printPastDueSecuritites() {
+    private static void printPastDueSecuritites() {
         if (!(orgList.isEmpty())) {
 
             printer.accept("Количество просроченных бумаг: " + getAllSecurities().stream().filter(s -> {
